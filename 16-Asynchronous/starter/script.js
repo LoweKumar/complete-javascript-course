@@ -33,7 +33,12 @@ const getCountryData = function(country){
     });
 };
 
+getCountryData('Bharat');
 getCountryData('south africa');
 getCountryData('Australia');
+
+
+
+
 
 
