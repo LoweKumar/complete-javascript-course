@@ -31,14 +31,6 @@ const renderError = function (msg) {
     // countriesContainer.style.opacity = 1;
 };
 
-const getJSON = function (url, errorMsg = 'Something went wrong') {
-    return fetch(url).then(response => {
-      if (!response.ok) throw new Error(`${errorMsg} (${response.status})`);
-  
-      return response.json();
-    });
-  };
-
 // const getCountryAndNeighbour = function(country){
 //     // AJAX call country 1
 //     const request = new XMLHttpRequest();
@@ -100,9 +92,60 @@ const getJSON = function (url, errorMsg = 'Something went wrong') {
 //     });
 // };
 
+// const getCountryData = function(country){
+//     fetch(`https://restcountries.com/v3.1/name/${country}`)
+//     .then(response => {
+//         console.log(response);
+
+//         if(!response.ok)
+//             throw new Error(`Country not found ${response.status}`)
+
+            
+//         return response.json();
+//     })
+//     .then(data => {
+//         renderCountry(data[0]);
+//         console.log(data[0]);
+//         const capital = data.capital;
+//         console.log(capital);
+//         if (!capital) return;
+
+//         //return capital
+//         return fetch(`https://restcountries.com/v3.1/capital/${capital}`);
+//         })
+//         .then(response => console.log(response.json()))
+//         .then(data => renderCountry(data, 'capital'))
+//         .catch(err => {
+//             console.error(`${err} 💥💥💥`);
+//             renderError(`Something went wrong 💥💥 ${err.message}. Try again!`);
+//           })
+//         .finally(() => {
+//             countriesContainer.style.opacity = 1;
+//           });
+    
+// };
+
+// btn.addEventListener('click', function(){
+//     getCountryData('bhffgfgf')
+// })
+// // getCountryData('australia');
+
+
+// Using getJSON function to get the response and proper error messages in our fetch call step for a function
+
+const getJSON = function (url, errorMsg = 'Something went wrong') {
+    return fetch(url).then(response => {
+      if (!response.ok) throw new Error(`${errorMsg} (${response.status})`);
+  
+      return response.json();
+    });
+  };
+
 const getCountryData = function(country){
-    fetch(`https://restcountries.com/v3.1/name/${country}`)
-    .then(response => response.json())
+    getJSON(
+        `https://restcountries.com/v3.1/name/${country}`,
+        'Country not found'
+    )
     .then(data => {
         renderCountry(data[0]);
         console.log(data[0]);
