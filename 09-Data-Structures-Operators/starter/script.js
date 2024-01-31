@@ -26,4 +26,56 @@ const restaurant = {
       close: 24,
     },
   },
+
+  orderDelivery : function({starterIndex = 1, mainIndex = 0, time = '20:00', address }){
+    console.log(
+      `Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
+    );
+  },
+
+  order(starterIndex, mainIndex) {
+    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+  },
 };
+
+restaurant.orderDelivery({starterIndex : 2, mainIndex : 2, time : '22:30', address : 'NewYork'})
+
+const arr = [2,3,4];
+// destructuring array demo
+const[x, y, z] = arr;
+console.log(x, y ,z);
+let[main, , secondary] = restaurant.categories;
+console.log(main, secondary);
+
+// swap value of two variables main and secondary
+[main, secondary] = [secondary, main];
+console.log(main, secondary);
+
+const[starter, mainCourse] = restaurant.order(0,2);
+console.log(starter, mainCourse);
+
+// destructuring objects
+const{name :restaurantName, openingHours:hours, categories:tags} = restaurant;
+console.log(restaurantName, hours, tags);
+
+//setting the default values in object destructuring
+const{menu =[], starterMenu: starters = []} = restaurant;
+console.log(menu, starters);
+
+//Mutating Variables
+let a = 100;
+let b = 121;
+const obj = {a:200, b:300, c:400}
+({a,b} = obj);
+console.log(a, b);
+
+
+
+
+
+
+
+
+
+
+
