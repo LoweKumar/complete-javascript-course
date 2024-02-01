@@ -89,6 +89,42 @@ const newRestaurant = {foundedIn : 1885, ...restaurant, founderName : 'Kumar'};
 console.log(newRestaurant);
 
 
+//Rest patterns and parameters
+// Rest is opposite of Spread operators
+
+// spread because on the right side of =
+const arr1 = [1, 2, ...[3, 4]];
+console.log(arr1);
+
+// REST because on the left side of =
+const [a, b, ...others] = [1, 2, 3, 4, 5];
+console.log(a, b, others);
+
+//objects demo for REST operator
+const {sat, ...weekdays} = restaurant.openingHours;
+console.log(weekdays);
+
+//create a function that accepts any no of parameters and return the result after addition
+// using REST operator to achieve this
+const add = function (...numbers){
+  let sum = 0;
+  for (let i = 0; i < numbers.length; i++){
+    sum += numbers[i];
+  }
+  console.log(sum);
+};
+
+add(1,2,3);
+add(1,2,3,4,5);
+add(1,2,3,4,5,6,7,8,9);
+// will use spread operator to provide values to add()
+const no = [2, 4, 6, 8, 10];
+add(...no);
+
+
+
+
+
 
 
 
