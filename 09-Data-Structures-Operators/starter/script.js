@@ -62,13 +62,31 @@ console.log(restaurantName, hours, tags);
 const{menu =[], starterMenu: starters = []} = restaurant;
 console.log(menu, starters);
 
-//Mutating Variables
-let a = 100;
-let b = 121;
-const obj = {a:200, b:300, c:400}
-({a,b} = obj);
-console.log(a, b);
+// //Mutating Variables
+// let a = 100;
+// let b = 121;
+// const obj = {a:200, b:300, c:400}
+// ({a,b} = obj);
+// console.log(a, b);
 
+//spread operator
+const newMenu = [...restaurant.mainMenu, 'Gnocci'];
+console.log(newMenu);
+
+const str = 'My name is abc';
+const strings = [...str, 'and XYZ'];
+console.log(strings);
+
+//copy array
+const mainMenuCopy = [...restaurant.mainMenu];
+
+//join 2 arrays
+const menuCreate = [...restaurant.starterMenu, ...restaurant.mainMenu];
+console.log(menuCreate);
+
+//using spread oerator to get the old objets of restaurant and add new objects
+const newRestaurant = {foundedIn : 1885, ...restaurant, founderName : 'Kumar'};
+console.log(newRestaurant);
 
 
 
